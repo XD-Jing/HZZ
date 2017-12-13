@@ -1,0 +1,19 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.gridExeAttribSet"
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.gridExeAttribSet.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "llvv" ],
+		"name" : "j.gridExeAttribSet"
+	}
+}

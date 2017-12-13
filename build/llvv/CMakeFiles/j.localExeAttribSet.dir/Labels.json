@@ -1,0 +1,19 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.localExeAttribSet"
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.localExeAttribSet.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "llvv" ],
+		"name" : "j.localExeAttribSet"
+	}
+}

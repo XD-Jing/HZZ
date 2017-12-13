@@ -1,0 +1,28 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/source/llvv/llvv/aFactor.h"
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/source/llvv/Root/aFactor.cxx"
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/llvvLibCintDict.cxx",
+			"labels" : [ "llvv" ]
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/llvvLibCintDict.cxx.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "llvv" ],
+		"name" : "llvvLib"
+	}
+}

@@ -1,0 +1,19 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/x86_64-slc6-gcc62-opt/include/llvv"
+		},
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/build/x86_64-slc6-gcc62-opt/include/llvv.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "llvv" ],
+		"name" : "llvvHeaderInstall"
+	}
+}

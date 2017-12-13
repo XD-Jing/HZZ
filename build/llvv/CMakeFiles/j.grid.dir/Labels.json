@@ -1,0 +1,15 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/atlas/data19/liji/HZZ/source/llvv/util/j-grid.cxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "llvv" ],
+		"name" : "j.grid"
+	}
+}
