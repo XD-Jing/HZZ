@@ -1,3 +1,4 @@
+#include <TLorentzVector.h>
 #include <TFile.h>
 #include <AsgTools/MessageCheck.h>
 #include <xAODEventInfo/EventInfo.h>
@@ -15,6 +16,11 @@
 #include <xAODTruth/TruthEventContainer.h>
 #include <xAODTruth/TruthParticle.h>
 #include <xAODTruth/TruthParticleContainer.h>
+#include <xAODTruth/TruthParticle.h>
+#include <xAODTruth/TruthParticleContainer.h>
+
+#include <vector>
+using namespace std;
 
 // this is needed to distribute the algorithm to the workers
 ClassImp(aFactor)
@@ -141,131 +147,92 @@ EL::StatusCode aFactor :: exeEventInfo()
     return EL::StatusCode::SUCCESS;
 }
 
-
-//EL::StatusCode aFactor :: exeMuon()
-//{
-//    ANA_CHECK_SET_TYPE (EL::StatusCode);
-//
-//    const xAOD::MuonContainer *muons = nullptr;
-//    ANA_CHECK (evtStore()->retrieve (muons, "Muons"));
-//
-//    for ( auto muon : *muons) {
-//        ANA_MSG_INFO ("execute(): original muon pt =" << ((muon)->pt() * 0.001) << " GeV");
-//    }
-//
-//    return EL::StatusCode::SUCCESS;
-//
-//}
-
 EL::StatusCode aFactor::cutLepton()
 {
     ANA_CHECK_SET_TYPE (EL::StatusCode);
 
+    vector<TLorentzVector> vp4e, vp4m, vp4n;
+    vp4e.clear();
+    vp4m.clear();
+    vp4n.clear();
+
     const xAOD::TruthParticleContainer* TruthElectrons = nullptr;
     ANA_CHECK( evtStore()->retrieve( TruthElectrons, "TruthElectrons"));
-
-    for ( auto truthElectron : *TruthElectrons){
-        int status = truthElectron->status();
-        int PDG = truthElectron->pdgId();
-        int barcode = truthElectron->barcode();
-        bool ProdVx = truthElectron->hasProdVtx();
-        bool DecayVx = truthElectron->hasDecayVtx();
-        TLorentzVector p4 = truthElectron->p4();
-
-        const xAOD::TruthParticle* parPart = truthElectron->parent();
-        int PDGpar = -1, statuspar = -1;
-        if (parPart){
-            PDGpar = parPart->pdgId();
-            statuspar = parPart->status();
-        }
-        if (fabs(PDG)==11 && status==1){// && barcode<=200000){
-            ANA_MSG_INFO("electron E = "<< p4.E() << "parent:" << PDGpar << ProdVx << DecayVx << " "<< truthElectron->nParents());
-        }
-    }
-
     const xAOD::TruthParticleContainer* TruthMuons = nullptr;
     ANA_CHECK( evtStore()->retrieve( TruthMuons, "TruthMuons"));
+    const xAOD::TruthParticleContainer* TruthNeutrinos = nullptr;
+    ANA_CHECK( evtStore()->retrieve( TruthNeutrinos, "TruthNeutrinos"));
+    const xAOD::TruthParticleContainer* TruthPhotons = nullptr;
+    ANA_CHECK( evtStore()->retrieve( TruthPhotons, "TruthPhotons"));
+    const xAOD::TruthEventContainer* TruthEvtContainer= nullptr;
+    ANA_CHECK( evtStore()->retrieve( TruthEvtContainer, "TruthEvents"));
 
-    for ( auto truthMuon : *TruthMuons){
-        int status = truthMuon->status();
-        int PDG = truthMuon->pdgId();
-        int barcode = truthMuon->barcode();
-        TLorentzVector p4 = truthMuon->p4();
+    for ( auto trPart : *TruthElectrons){
+        int status = trPart->status();
+        int PDG = trPart->pdgId();
+        int barcode = trPart->barcode();
+        TLorentzVector p4 = trPart->p4();
 
-        const xAOD::TruthParticle* parPart = truthMuon->parent();
-        int PDGpar = -1, statuspar = -1;
-        if (parPart){
-            PDGpar = parPart->pdgId();
-            statuspar = parPart->status();
-        }
-
-        if (fabs(PDG)==13 && status==1 && barcode<=200000){
-            ANA_MSG_INFO("muon E = "<< p4.E() << "parent:" << PDGpar );
+        if (fabs(PDG)==11 && status==1 && barcode<=200000){
+            vp4e.push_back(p4);
+            //ANA_MSG_INFO("electron E = "<< p4.E() << "parent:" << PDGpar << ProdVx << DecayVx << " "<< truthElectron->nParents());
         }
     }
 
-    const xAOD::TruthParticleContainer* TruthNeutrinos = nullptr;
-    ANA_CHECK( evtStore()->retrieve( TruthNeutrinos, "TruthNeutrinos"));
+    for ( auto trPart : *TruthMuons){
+        int status = trPart->status();
+        int PDG = trPart->pdgId();
+        int barcode = trPart->barcode();
+        TLorentzVector p4 = trPart->p4();
+
+        if (fabs(PDG)==13 && status==1 && barcode<=200000){
+            //ANA_MSG_INFO("muon E = "<< p4.E() << "parent:" << PDGpar );
+            vp4m.push_back(p4);
+        }
+    }
+
+    for ( auto trPart : *TruthNeutrinos){
+        int status = trPart->status();
+        int PDG = trPart->pdgId();
+        int barcode = trPart->barcode();
+        TLorentzVector p4 = trPart->p4();
+
+        if ((fabs(PDG)==12 || fabs(PDG)==14) && status ==1){
+            vp4n.push_back(p4);
+        }
+    }
+
+    for ( auto trEvtItr: *TruthEvtContainer){
+        int nTruPart = trEvtItr->nTruthParticles();
+        ANA_MSG_INFO("number of TruthParticles: " << nTruPart );
+        for (int j=0; j<nTruPart; j++){
+            const xAOD::TruthParticle* trPart = trEvtItr->truthParticle(j);
+            if (!trPart) continue;
+            int status = trPart->status();
+            int PDG = trPart->pdgId();
+            bool ProdVx = trPart->hasProdVtx();
+            bool DecayVx = trPart->hasDecayVtx();
+            int barcode = trPart->barcode();
+            TLorentzVector p4 = trPart->p4();
+
+            size_t nParents = trPart->nParents();
+            const xAOD::TruthParticle* parPart = trPart->parent();
+            int PDGpar = -1, statuspar = -1;
+            TLorentzVector p4par(0,0,0,0);
+            if (parPart){
+                PDGpar = parPart->pdgId();
+                statuspar = parPart->status();
+                p4par = parPart->p4();
+            }
+
+            //ANA_MSG_INFO("Part " << j<< " status " << status<< " pdg "<< PDG<< " father "<< PDGpar);
+            if (status ==1 && fabs(PDG)==11) ANA_MSG_INFO("Part " << j<< " status " << status<< " pdg "<< PDG<< " father "<< PDGpar);
+        }
+    }
+
     return EL::StatusCode::SUCCESS;
 
 }
-
-//EL::StatusCode aFactor :: exeDeepCopy()
-//{
-//    // An xAOD container is always described by two objects. An "interface container" that you interact with, and an auxiliary store object that holds all the data.
-//    ANA_CHECK_SET_TYPE (EL::StatusCode);
-//
-//    // Retrieve input jet container
-//    xAOD::JetContainer *jets = nullptr;
-//    ANA_CHECK (evtStore()->retrieve (jets, "AntiKt4EMTopoJets"));
-//
-//    auto goodJets = std::make_unique<xAOD::JetContainer>();
-//    auto goodJetsAux = std::make_unique<xAOD::AuxContainerBase>();
-//    goodJets->setStore (goodJetsAux.get());
-//
-//    for (auto jet: *jets){
-//        if (jet->pt() < 50e03) continue;
-//
-//        xAOD::Jet *goodJet = new xAOD::Jet();
-//        goodJets->push_back (goodJet);
-//        *goodJet = *jet;
-//    }
-//
-//    ANA_CHECK (evtStore()->record (goodJets.release(), "GoodJets"));
-//    ANA_CHECK (evtStore()->record (goodJetsAux.release(), "GoodJetsAux."));
-//
-//    return EL::StatusCode::SUCCESS;
-//}
-//
-//
-//
-//EL::StatusCode aFactor :: exeShallowCopy()
-//{
-//    ANA_CHECK_SET_TYPE (EL::StatusCode);
-//
-//    const xAOD::JetContainer *jets = nullptr;
-//    ANA_CHECK (evtStore()->retrieve (jets, "AntiKt4EMTopoJets"));
-//
-//    auto shallowCopy = xAOD::shallowCopyContainer (*jets);
-//    std::unique_ptr<xAOD::JetContainer> shallowJets (shallowCopy.first);
-//    std::unique_ptr<xAOD::ShallowAuxContainer> shallowAux (shallowCopy.second);
-//
-//    double newPt;
-//    for (auto jetSC : *shallowCopy.first) {
-//        newPt = jetSC->pt() * (10);
-//
-//        xAOD::JetFourMom_t newp4 (newPt, jetSC->eta(), jetSC->phi(), jetSC->m());
-//        jetSC->setJetP4 (newp4);
-//    }
-//
-//    ANA_MSG_INFO ("shallow copy");
-//
-//    ANA_CHECK (evtStore()->record (shallowJets.release(), "AntiKt4EMTopoJets"));
-//    ANA_CHECK (evtStore()->record (shallowAux.release(), "AntiKt4EMTopoJetsAux."));
-//
-//    return EL::StatusCode::SUCCESS;
-//}
-
 
 
 EL::StatusCode aFactor :: postExecute ()
@@ -275,8 +242,6 @@ EL::StatusCode aFactor :: postExecute ()
     // code.  It is mainly used in implementing the NTupleSvc.
     return EL::StatusCode::SUCCESS;
 }
-
-
 
 EL::StatusCode aFactor :: finalize ()
 {
