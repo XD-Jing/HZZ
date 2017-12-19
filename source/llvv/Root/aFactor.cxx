@@ -4,7 +4,7 @@
 #include <xAODEventInfo/EventInfo.h>
 #include <xAODMuon/MuonContainer.h>
 #include <xAODMuon/MuonContainer.h>
-//#include <xAODJet/JetContainer.h>
+#include <xAODJet/JetContainer.h>
 #include <xAODCore/AuxContainerBase.h>
 #include <xAODCore/ShallowCopy.h>
 #include <EventLoop/Job.h>
@@ -70,6 +70,25 @@ EL::StatusCode aFactor :: histInitialize ()
     tree = new TTree ("tree", "tree");
     tree->SetDirectory (outputFile);
     tree->Branch ("EventNumber", &EventNumber);
+    tree->Branch ("onshell", &onshell);
+    tree->Branch ("passLep", &passLep);
+    tree->Branch ("passM2l", &passM2l);
+    tree->Branch ("passJet", &passJet);
+    tree->Branch ("mZ1", &mZ1);
+    tree->Branch ("mZ2", &mZ2);
+    tree->Branch ("lepplus_pt", &lepplus_pt);
+    tree->Branch ("lepplus_eta", &lepplus_eta);
+    tree->Branch ("lepplus_phi", &lepplus_phi);
+    tree->Branch ("lepminus_pt", &lepminus_pt);
+    tree->Branch ("lepminus_eta", &lepminus_eta);
+    tree->Branch ("lepminus_phi", &lepminus_phi);
+    tree->Branch ("event_type", &event_type);
+    tree->Branch ("leading_pt_lep", &leading_pt_lep);
+    tree->Branch ("subleading_pt_lep", &subleading_pt_lep);
+    tree->Branch ("leading_pt_jet", &leading_pt_jet);
+    tree->Branch ("subleading_pt_jet", &subleading_pt_jet);
+    tree->Branch ("leading_eta_jet", &leading_eta_jet);
+    tree->Branch ("subleading_eta_jet", &subleading_eta_jet);
     return EL::StatusCode::SUCCESS;
 }
 
@@ -104,6 +123,25 @@ EL::StatusCode aFactor :: initialize ()
     // input events.
 
     ANA_MSG_INFO ("in initialize");
+    event_type = -1;
+    onshell = false;
+    passLep = false;
+    passM2l = false;
+    passJet = false;
+    mZ1 = -1.;
+    mZ2 = -1.;
+    lepplus_pt = -999.;
+    lepplus_eta = -999.;
+    lepplus_phi = -999.;
+    lepminus_pt = -999.;
+    lepminus_eta = -999.;
+    lepminus_phi = -999.;
+    leading_pt_lep = -999.;
+    subleading_pt_lep = -999.;
+    leading_pt_jet = -999.;
+    subleading_pt_jet = -999.;
+    leading_eta_jet = -999.;
+    subleading_eta_jet = -999.;
     return EL::StatusCode::SUCCESS;
 }
 
@@ -151,56 +189,24 @@ EL::StatusCode aFactor::cutLepton()
 {
     ANA_CHECK_SET_TYPE (EL::StatusCode);
 
-    vector<TLorentzVector> vp4e, vp4m, vp4n;
+    vector<TLorentzVector> vp4e, vp4m, vp4n, vp4z, vp4n12, vp4n14, vp4t, vp4n16, vp4j;
+    vector<TLorentzVector> vp4l;
+    vector<float> vcharge;
+    int n_e=0, n_m=0, n_ne=0, n_nm=0;
+    vp4l.clear();
     vp4e.clear();
     vp4m.clear();
-    vp4n.clear();
+    vp4t.clear();
+    //vp4n.clear();
+    vp4z.clear();
+    vp4n12.clear();
+    vp4n14.clear();
+    vp4n16.clear();
+    vcharge.clear();
+    vp4j.clear();
 
-    const xAOD::TruthParticleContainer* TruthElectrons = nullptr;
-    ANA_CHECK( evtStore()->retrieve( TruthElectrons, "TruthElectrons"));
-    const xAOD::TruthParticleContainer* TruthMuons = nullptr;
-    ANA_CHECK( evtStore()->retrieve( TruthMuons, "TruthMuons"));
-    const xAOD::TruthParticleContainer* TruthNeutrinos = nullptr;
-    ANA_CHECK( evtStore()->retrieve( TruthNeutrinos, "TruthNeutrinos"));
-    const xAOD::TruthParticleContainer* TruthPhotons = nullptr;
-    ANA_CHECK( evtStore()->retrieve( TruthPhotons, "TruthPhotons"));
     const xAOD::TruthEventContainer* TruthEvtContainer= nullptr;
     ANA_CHECK( evtStore()->retrieve( TruthEvtContainer, "TruthEvents"));
-
-    for ( auto trPart : *TruthElectrons){
-        int status = trPart->status();
-        int PDG = trPart->pdgId();
-        int barcode = trPart->barcode();
-        TLorentzVector p4 = trPart->p4();
-
-        if (fabs(PDG)==11 && status==1 && barcode<=200000){
-            vp4e.push_back(p4);
-            //ANA_MSG_INFO("electron E = "<< p4.E() << "parent:" << PDGpar << ProdVx << DecayVx << " "<< truthElectron->nParents());
-        }
-    }
-
-    for ( auto trPart : *TruthMuons){
-        int status = trPart->status();
-        int PDG = trPart->pdgId();
-        int barcode = trPart->barcode();
-        TLorentzVector p4 = trPart->p4();
-
-        if (fabs(PDG)==13 && status==1 && barcode<=200000){
-            //ANA_MSG_INFO("muon E = "<< p4.E() << "parent:" << PDGpar );
-            vp4m.push_back(p4);
-        }
-    }
-
-    for ( auto trPart : *TruthNeutrinos){
-        int status = trPart->status();
-        int PDG = trPart->pdgId();
-        int barcode = trPart->barcode();
-        TLorentzVector p4 = trPart->p4();
-
-        if ((fabs(PDG)==12 || fabs(PDG)==14) && status ==1){
-            vp4n.push_back(p4);
-        }
-    }
 
     for ( auto trEvtItr: *TruthEvtContainer){
         int nTruPart = trEvtItr->nTruthParticles();
@@ -213,6 +219,7 @@ EL::StatusCode aFactor::cutLepton()
             bool ProdVx = trPart->hasProdVtx();
             bool DecayVx = trPart->hasDecayVtx();
             int barcode = trPart->barcode();
+            float charge = trPart->charge();
             TLorentzVector p4 = trPart->p4();
 
             size_t nParents = trPart->nParents();
@@ -225,13 +232,117 @@ EL::StatusCode aFactor::cutLepton()
                 p4par = parPart->p4();
             }
 
-            //ANA_MSG_INFO("Part " << j<< " status " << status<< " pdg "<< PDG<< " father "<< PDGpar);
-            if (status ==1 && fabs(PDG)==11) ANA_MSG_INFO("Part " << j<< " status " << status<< " pdg "<< PDG<< " father "<< PDGpar);
+            //if (status==62 && fabs(PDG)==23) vp4z.push_back(p4);
+            if (statuspar==62 && fabs(PDG)==11) {
+                vp4l.push_back(p4);
+                n_e++;
+                vcharge.push_back(charge);
+            }
+            if (statuspar==62 && fabs(PDG)==13){
+                vp4l.push_back(p4);
+                n_m++;
+                vcharge.push_back(charge);
+            }
+            //if (statuspar==62 && fabs(PDG)==15) vp4t.push_back(p4);
+            if (statuspar==62 && fabs(PDG)==12){
+                vp4n.push_back(p4);
+                n_ne++;
+            }
+            if (statuspar==62 && fabs(PDG)==14){
+                vp4n.push_back(p4);
+                n_nm++;
+            }
+            //if (statuspar==62 && fabs(PDG)==16) vp4n16.push_back(p4);
         }
     }
 
-    return EL::StatusCode::SUCCESS;
+    std::cout << vp4z.size() << vp4e.size()<<vp4m.size()<< vp4t.size()<<vp4n12.size()<<vp4n14.size()<< vp4n16.size()<<std::endl;
 
+    //if (vp4z.size()==2){
+    //    double mZ1 = vp4z[0].M();
+    //    double mZ2 = vp4z[1].M();
+    //}
+    if (vp4l.size()==2){
+        if (vcharge[0]>0 && vcharge[1]<0){
+            lepplus_pt= vp4l[0].Pt();
+            lepplus_eta = vp4l[0].Eta();
+            lepplus_phi= vp4l[0].Phi();
+            lepminus_pt= vp4l[1].Pt();
+            lepminus_eta = vp4l[1].Eta();
+            lepminus_phi= vp4l[1].Phi();
+        }else{
+            lepplus_pt= vp4l[1].Pt();
+            lepplus_eta = vp4l[1].Eta();
+            lepplus_phi= vp4l[1].Phi();
+            lepminus_pt= vp4l[0].Pt();
+            lepminus_eta = vp4l[0].Eta();
+            lepminus_phi= vp4l[0].Phi();
+        }
+        mZ1 = (vp4l[0]+vp4l[1]).M();
+        if (vp4l[0].Pt()>vp4l[1].Pt()) {
+            leading_pt_lep = vp4l[0].Pt();
+            subleading_pt_lep = vp4l[1].Pt();
+        }else{
+            leading_pt_lep = vp4l[1].Pt();
+            subleading_pt_lep = vp4l[0].Pt();
+        }
+    }
+
+    if (vp4n.size()==2) mZ2 = (vp4n[0]+vp4n[1]).M();
+
+    if (mZ1 > 66.e3 && mZ1 < 116.e3 && mZ2 > 66.e3 && mZ2 < 116.e3) onshell = true;
+    if (mZ1 > 76.e3 && mZ1 < 106.e3) passM2l = true;
+
+    if (n_e==2 && n_ne==2) event_type = 0;
+    else if(n_e==2 && n_nm==2) event_type = 1;
+    else if (n_m==2 && n_ne==2) event_type = 2;
+    else if (n_m==2 && n_nm==2) event_type = 3;
+
+    if (leading_pt_lep > 30.e3 && subleading_pt_lep > 20.e3) passLep = true;
+
+    const xAOD::JetContainer* TruthJets= nullptr;
+    ANA_CHECK( evtStore()->retrieve( TruthJets, "AntiKt4TruthJets"));
+
+    for ( auto trJet: *TruthJets){
+        //if (trJet->pt()>20.e3 && fabs(trJet->eta())<4.5) vp4j.push_back(trJet->p4());
+        vp4j.push_back(trJet->p4());
+    }
+
+    if (vp4l.size()==2){
+        for (int i=0;i<(int)vp4j.size();i++){
+            if (vp4j[i].DeltaR(vp4l[0]) < 0.2){
+                vp4j.erase(vp4j.begin()+i);
+                i--;
+            }
+        }
+        for (int i=0;i<(int)vp4j.size();i++){
+            if (vp4j[i].DeltaR(vp4l[1]) < 0.2){
+                vp4j.erase(vp4j.begin()+i);
+                i--;
+            }
+        }
+    }
+
+    int leading_index_jet = -1;
+    int subleading_index_jet = -1;
+    float pt_tmp;
+    for (int i=0;i<(int)vp4j.size();i++){
+        pt_tmp = vp4j[i].Pt();
+        if (pt_tmp>leading_pt_jet && pt_tmp>subleading_pt_jet){
+            leading_pt_jet = pt_tmp;
+            leading_index_jet = i;
+        }else if (pt_tmp<leading_pt_jet && pt_tmp > subleading_pt_jet){
+            subleading_pt_jet = pt_tmp;
+            subleading_index_jet = i;
+        }
+    }
+
+    leading_eta_jet = vp4j[leading_index_jet].Eta();
+    subleading_eta_jet = vp4j[subleading_index_jet].Eta();
+
+    if (leading_pt_jet > 60.e3 && subleading_pt_jet > 40.e3) passJet = true;
+
+    return EL::StatusCode::SUCCESS;
 }
 
 
@@ -272,4 +383,13 @@ EL::StatusCode aFactor :: histFinalize ()
     // that it gets called on all worker nodes regardless of whether
     // they processed input events.
     return EL::StatusCode::SUCCESS;
+}
+
+
+bool aFactor::CheckFromZ(const xAOD::TruthParticle* trPart, int PDG){
+    const xAOD::TruthParticle *parent = trPart->parent();
+    if (!parent) return false;
+    if (parent->pdgId()==PDG) return CheckFromZ(parent, PDG);
+    if (parent->pdgId()==23) return true;
+    else return false;
 }

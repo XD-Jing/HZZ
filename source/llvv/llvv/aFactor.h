@@ -3,6 +3,8 @@
 
 #include <EventLoop/Algorithm.h>
 #include <TTree.h>
+#include <xAODTruth/TruthParticle.h>
+#include <xAODTruth/TruthParticleContainer.h>
 
 class aFactor : public EL::Algorithm
 {
@@ -24,7 +26,27 @@ public:
     std::string outputName;
     TTree *tree; //!
     int EventNumber; //!
-
+    bool onshell;//!
+    bool passM2l;//!
+    bool passLep;//!
+    bool passJet;//!
+    bool isMC;//!
+    int event_type;//!
+    // event_type = 0 for eenuee;1 for eenummm; 2 for mmnuee; 3 for mmnumm
+    float mZ1;//!
+    float mZ2;//!
+    float lepplus_pt;//!
+    float lepplus_eta;//!
+    float lepplus_phi;//!
+    float lepminus_pt;//!
+    float lepminus_eta;//!
+    float lepminus_phi;//!
+    float leading_pt_lep;//!
+    float subleading_pt_lep;//!
+    float leading_pt_jet;//!
+    float subleading_pt_jet;//!
+    float leading_eta_jet;//!
+    float subleading_eta_jet;//!
 
     // this is a standard constructor
     aFactor ();
@@ -40,10 +62,12 @@ public:
     virtual EL::StatusCode finalize ();
     virtual EL::StatusCode histFinalize ();
 
+    bool CheckFromZ( const xAOD::TruthParticle* trPart, int PDG);
     EL::StatusCode exeEventInfo();
-    EL::StatusCode exeMuon();
-    EL::StatusCode exeDeepCopy();
-    EL::StatusCode exeShallowCopy();
+    EL::StatusCode cutLepton();
+//    EL::StatusCode exeMuon();
+//    EL::StatusCode exeDeepCopy();
+//    EL::StatusCode exeShallowCopy();
     // this is needed to distribute the algorithm to the workers
     ClassDef(aFactor, 1);
 };

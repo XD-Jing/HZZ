@@ -63,7 +63,7 @@ add_library(UserAnalysis::llvvLib SHARED IMPORTED)
 
 set_target_properties(UserAnalysis::llvvLib PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "\$<TARGET_PROPERTY:UserAnalysis::llvvPkg,INTERFACE_INCLUDE_DIRECTORIES>"
-  INTERFACE_LINK_LIBRARIES "EventLoop;xAODEventInfo;xAODMuon;xAODJet;xAODCore;EventLoopAlgs"
+  INTERFACE_LINK_LIBRARIES "EventLoop;xAODEventInfo;xAODMuon;xAODJet;xAODCore;EventLoopAlgs;xAODTruth"
 )
 
 # Create imported target UserAnalysis::j.local

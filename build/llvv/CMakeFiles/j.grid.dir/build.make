@@ -105,9 +105,10 @@ x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/Ana
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODCaloEvent.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCaloGeoHelpers.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODTracking.so
+x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODTrigger.so
+x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODTruth.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODBase.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/../../../../AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so
-x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODTrigger.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libEventLoop.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/../../../../AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libgtest.so
 x86_64-slc6-gcc62-opt/bin/j.grid: /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libAnaAlgorithmLib.so

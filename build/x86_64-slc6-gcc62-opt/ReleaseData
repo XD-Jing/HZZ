@@ -2,6 +2,6 @@
 release:1.0.0
 nightly name:master
 project name:UserAnalysis
-nightly release:9573555
-date:2017-12-13T1639
+nightly release:c839427
+date:2017-12-19T1130
 compiler:GNU-6.2.0

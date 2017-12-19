@@ -12,7 +12,7 @@ atlas_add_library (llvvLib
     llvv/*.h llvv/*.ihh Root/*.cxx ${llvvDictSource}
     PUBLIC_HEADERS llvv
     INCLUDE_DIRS
-    LINK_LIBRARIES EventLoop xAODEventInfo xAODMuon xAODJet xAODCore EventLoopAlgs
+    LINK_LIBRARIES EventLoop xAODEventInfo xAODMuon xAODJet xAODCore EventLoopAlgs xAODTruth
     PRIVATE_LINK_LIBRARIES )
 
 # add the defined binaries:

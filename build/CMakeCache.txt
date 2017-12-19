@@ -593,7 +593,7 @@ _setupSkeleton:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/
 _thisFile:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/AtlasFunctions.cmake
 
 //Dependencies for the target
-llvvLib_LIB_DEPENDS:STATIC=general;EventLoop;general;xAODEventInfo;general;xAODMuon;general;xAODJet;general;xAODCore;general;EventLoopAlgs;general;dl;
+llvvLib_LIB_DEPENDS:STATIC=general;EventLoop;general;xAODEventInfo;general;xAODMuon;general;xAODJet;general;xAODCore;general;EventLoopAlgs;general;xAODTruth;general;dl;
 
 
 ########################

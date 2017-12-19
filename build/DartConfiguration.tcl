@@ -14,7 +14,7 @@ CostDataFile:
 Site: umt3int02.aglt2.org
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-g++
+BuildName: x86_64-slc6-gcc62-opt
 
 # Submission information
 IsCDash: 
