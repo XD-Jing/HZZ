@@ -5,6 +5,9 @@
 #include <TTree.h>
 #include <xAODTruth/TruthParticle.h>
 #include <xAODTruth/TruthParticleContainer.h>
+//#include <xAODRootAccess/TEvent.h>
+//#include <xAODRootAccess/Init.h>
+
 
 class aFactor : public EL::Algorithm
 {
@@ -22,6 +25,12 @@ public:
     // Tree *myTree; //!
     // TH1 *myHist; //!
 
+    static int count;
+    static float total_cutflow;
+    static float passLep_cutflow;
+    static float passJet_cutflow;
+    static float passM2l_cutflow;
+
     // defining the output file name and tree that we will put in the output ntuple, also the one branch that will be in that tree 
     std::string outputName;
     TTree *tree; //!
@@ -32,6 +41,7 @@ public:
     bool passJet;//!
     bool isMC;//!
     int event_type;//!
+    float weight;//!
     // event_type = 0 for eenuee;1 for eenummm; 2 for mmnuee; 3 for mmnumm
     float mZ1;//!
     float mZ2;//!
@@ -63,6 +73,7 @@ public:
     virtual EL::StatusCode histFinalize ();
 
     bool CheckFromZ( const xAOD::TruthParticle* trPart, int PDG);
+    EL::StatusCode variableInit();
     EL::StatusCode exeEventInfo();
     EL::StatusCode cutLepton();
 //    EL::StatusCode exeMuon();

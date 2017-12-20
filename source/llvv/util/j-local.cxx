@@ -40,7 +40,7 @@ void ATestRun (const std::string& submitDir)
     // this is the basic description of our job
     EL::Job job;
     job.sampleHandler (sh); // use SampleHandler in this job
-    job.options()->setDouble (EL::Job::optMaxEvents, 10); // for testing purposes, limit to run over the first 500 events only!
+    //job.options()->setDouble (EL::Job::optMaxEvents, 150); // for testing purposes, limit to run over the first 500 events only!
 
     // define an output and an ntuple associated to that output
     EL::OutputStream output  ("myOutput");
@@ -54,6 +54,7 @@ void ATestRun (const std::string& submitDir)
     // set the name of the algorithm (this is the name use with
     // messages)
     alg->SetName ("AnalysisAlg");
+    //int aFactor::total_cutflow = 0;
 
     // later on we'll add some configuration options for our algorithm that go here
 

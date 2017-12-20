@@ -1,0 +1,4 @@
+[ libllvvLib.so ]
+# List of selected classes
+class aFactor
+header llvv/aFactor.h

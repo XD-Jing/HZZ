@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget UserAnalysis::llvvPkg UserAnalysis::llvvPkgPrivate UserAnalysis::llvvLib UserAnalysis::j.local UserAnalysis::j.grid)
+foreach(_expectedTarget UserAnalysis::llvvPkg UserAnalysis::llvvPkgPrivate UserAnalysis::llvvLib UserAnalysis::j.local)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -68,9 +68,6 @@ set_target_properties(UserAnalysis::llvvLib PROPERTIES
 
 # Create imported target UserAnalysis::j.local
 add_executable(UserAnalysis::j.local IMPORTED)
-
-# Create imported target UserAnalysis::j.grid
-add_executable(UserAnalysis::j.grid IMPORTED)
 
 if(CMAKE_VERSION VERSION_LESS 3.0.0)
   message(FATAL_ERROR "This file relies on consumers using CMake 3.0.0 or greater.")

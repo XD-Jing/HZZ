@@ -54,7 +54,7 @@ get_filename_component( UserAnalysis_PYTHON_DIR
 set( UserAnalysis_PYTHON_PATH ${UserAnalysis_PYTHON_DIR} )
 
 # The base projects that this project was built on top of:
-set( UserAnalysis_BASE_PROJECTS AnalysisBase;21.2.10 )
+set( UserAnalysis_BASE_PROJECTS AnalysisBase;21.2.13 )
 
 # The platform name used for the build. It is overridden in release builds,
 # but can be useful when building vanilla CMake code against the release.
@@ -293,7 +293,7 @@ if( UserAnalysis_FIND_COMPONENTS )
          "UserAnalysis - 1.0.0..." )
 
       # Targets to pull into the current project:
-      set( UserAnalysis_TARGET_NAMES llvvPkg;llvvPkgPrivate;llvvLib;j.local;j.grid )
+      set( UserAnalysis_TARGET_NAMES llvvPkg;llvvPkgPrivate;llvvLib;j.local )
 
       # Loop over the targets that this project has:
       foreach( _target ${UserAnalysis_TARGET_NAMES} )

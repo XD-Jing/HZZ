@@ -220,21 +220,6 @@ llvvHeaderInstall/fast:
 .PHONY : llvvHeaderInstall/fast
 
 # Convenience name for target.
-llvv/CMakeFiles/j.grid.dir/rule:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f CMakeFiles/Makefile2 llvv/CMakeFiles/j.grid.dir/rule
-.PHONY : llvv/CMakeFiles/j.grid.dir/rule
-
-# Convenience name for target.
-j.grid: llvv/CMakeFiles/j.grid.dir/rule
-
-.PHONY : j.grid
-
-# fast build rule for target.
-j.grid/fast:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/j.grid.dir/build.make llvv/CMakeFiles/j.grid.dir/build
-.PHONY : j.grid/fast
-
-# Convenience name for target.
 llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/rule:
 	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f CMakeFiles/Makefile2 llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/rule
 .PHONY : llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/rule
@@ -248,21 +233,6 @@ ATLAS_PACKAGES_TARGET: llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/rule
 ATLAS_PACKAGES_TARGET/fast:
 	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/build.make llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/build
 .PHONY : ATLAS_PACKAGES_TARGET/fast
-
-# Convenience name for target.
-llvv/CMakeFiles/j.gridExeAttribSet.dir/rule:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f CMakeFiles/Makefile2 llvv/CMakeFiles/j.gridExeAttribSet.dir/rule
-.PHONY : llvv/CMakeFiles/j.gridExeAttribSet.dir/rule
-
-# Convenience name for target.
-j.gridExeAttribSet: llvv/CMakeFiles/j.gridExeAttribSet.dir/rule
-
-.PHONY : j.gridExeAttribSet
-
-# fast build rule for target.
-j.gridExeAttribSet/fast:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/j.gridExeAttribSet.dir/build.make llvv/CMakeFiles/j.gridExeAttribSet.dir/build
-.PHONY : j.gridExeAttribSet/fast
 
 # Convenience name for target.
 llvv/CMakeFiles/Package_llvv_tests.dir/rule:
@@ -378,33 +348,6 @@ Root/aFactor.cxx.s:
 	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/llvvLib.dir/build.make llvv/CMakeFiles/llvvLib.dir/Root/aFactor.cxx.s
 .PHONY : Root/aFactor.cxx.s
 
-util/j-grid.o: util/j-grid.cxx.o
-
-.PHONY : util/j-grid.o
-
-# target to build an object file
-util/j-grid.cxx.o:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/j.grid.dir/build.make llvv/CMakeFiles/j.grid.dir/util/j-grid.cxx.o
-.PHONY : util/j-grid.cxx.o
-
-util/j-grid.i: util/j-grid.cxx.i
-
-.PHONY : util/j-grid.i
-
-# target to preprocess a source file
-util/j-grid.cxx.i:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/j.grid.dir/build.make llvv/CMakeFiles/j.grid.dir/util/j-grid.cxx.i
-.PHONY : util/j-grid.cxx.i
-
-util/j-grid.s: util/j-grid.cxx.s
-
-.PHONY : util/j-grid.s
-
-# target to generate assembly for a file
-util/j-grid.cxx.s:
-	cd /atlas/data19/liji/HZZ/build && $(MAKE) -f llvv/CMakeFiles/j.grid.dir/build.make llvv/CMakeFiles/j.grid.dir/util/j-grid.cxx.s
-.PHONY : util/j-grid.cxx.s
-
 util/j-local.o: util/j-local.cxx.o
 
 .PHONY : util/j-local.o
@@ -448,9 +391,7 @@ help:
 	@echo "... Package_llvv"
 	@echo "... install/local"
 	@echo "... llvvHeaderInstall"
-	@echo "... j.grid"
 	@echo "... ATLAS_PACKAGES_TARGET"
-	@echo "... j.gridExeAttribSet"
 	@echo "... Package_llvv_tests"
 	@echo "... j.local"
 	@echo "... package"
@@ -462,9 +403,6 @@ help:
 	@echo "... Root/aFactor.o"
 	@echo "... Root/aFactor.i"
 	@echo "... Root/aFactor.s"
-	@echo "... util/j-grid.o"
-	@echo "... util/j-grid.i"
-	@echo "... util/j-grid.s"
 	@echo "... util/j-local.o"
 	@echo "... util/j-local.i"
 	@echo "... util/j-local.s"

@@ -19,5 +19,5 @@ atlas_add_library (llvvLib
 atlas_add_executable (j.local util/j-local.cxx
     LINK_LIBRARIES llvvLib EventLoopAlgs EventLoop)
 
-atlas_add_executable (j.grid util/j-grid.cxx
-    LINK_LIBRARIES llvvLib EventLoopAlgs EventLoop EventLoopGrid)
+#atlas_add_executable (j.grid util/j-grid.cxx
+#    LINK_LIBRARIES llvvLib EventLoopAlgs EventLoop EventLoopGrid)

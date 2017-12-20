@@ -43,13 +43,13 @@ message( "Using nightly tag: ${_tag}" )
 
 # Find the log extractor scripts:
 find_file( _buildExtractor NAMES extractCTestBuild.py
-   PATH_SUFFIXES scripts PATHS /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules;/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules )
+   PATH_SUFFIXES scripts PATHS /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules;/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules )
 if( _buildExtractor MATCHES "NOTFOUND" )
    message( FATAL_ERROR "Couldn't find the extractCTestBuild.py script" )
 endif()
 message( "Using: ${_buildExtractor}" )
 find_file( _testExtractor NAMES extractCTestTest.py
-   PATH_SUFFIXES scripts PATHS /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules;/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules )
+   PATH_SUFFIXES scripts PATHS /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules;/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules )
 if( _testExtractor MATCHES "NOTFOUND" )
    message( FATAL_ERROR "Couldn't find the extractCTestTest.py script" )
 endif()

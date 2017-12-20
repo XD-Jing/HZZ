@@ -24,14 +24,5 @@ set_target_properties(UserAnalysis::j.local PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS UserAnalysis::j.local )
 list(APPEND _IMPORT_CHECK_FILES_FOR_UserAnalysis::j.local "${_IMPORT_PREFIX}/bin/j.local" )
 
-# Import target "UserAnalysis::j.grid" for configuration "RelWithDebInfo"
-set_property(TARGET UserAnalysis::j.grid APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
-set_target_properties(UserAnalysis::j.grid PROPERTIES
-  IMPORTED_LOCATION_RELWITHDEBINFO "${_IMPORT_PREFIX}/bin/j.grid"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS UserAnalysis::j.grid )
-list(APPEND _IMPORT_CHECK_FILES_FOR_UserAnalysis::j.grid "${_IMPORT_PREFIX}/bin/j.grid" )
-
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

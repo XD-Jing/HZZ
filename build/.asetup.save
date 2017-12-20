@@ -45,7 +45,7 @@ versiondirectory = False
 exactmatch = False
 cmtbcast = False
 gcc40default = False
-shellfile = /tmp/asetup_nRLUI8.sh
+shellfile = /tmp/asetup_JpaaWi.sh
 asioprio = False
 default32releases = slc5,slc4
 release = <none>
@@ -371,7 +371,7 @@ source /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/swConfig/asetup/asetupEpilog
 
 
 [unassigned]
-unassigned = AnalysisBase,21.2.10
+unassigned = 21.2.13,AnalysisBase
 
 [summary]
 PEDANTIC = <unset>
@@ -401,14 +401,14 @@ BINARY_TAG = x86_64-slc6-gcc49-opt
 ATLAS_RELEASE_BASE = /cvmfs/atlas.cern.ch/repo/sw/software/21.2
 CMTPROJECTPATH = <unset>
 DBRELEASE_OVERRIDE = current
-MANPATH = /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/emi/3.17.1-1_v3.sl6umd4v2/usr/share/man:/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/xrootd/4.6.1-x86_64-slc6-gcc62-opt/4.6.1-5209d/x86_64-slc6-gcc62-opt/man:/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/root/6.10.04-x86_64-slc6-gcc62-opt/man:/usr/local/share/man:/usr/share/man/en:/usr/share/man:/afs/atlas.umich.edu/opt/root/man:/opt/ganglia/man:/usr/java/latest/man:/opt/rocks/man:/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/rucio-clients/1.13.2/man
+MANPATH = /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/xrootd/4.6.1-x86_64-slc6-gcc62-opt/4.6.1-5209d/x86_64-slc6-gcc62-opt/man:/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/root/6.10.04-x86_64-slc6-gcc62-opt/man:/usr/local/share/man:/usr/share/man/en:/usr/share/man:/afs/atlas.umich.edu/opt/root/man:/opt/ganglia/man:/usr/java/latest/man:/opt/rocks/man
 MANPATH = <remove>contrib/gcc sw/lcg/releases/gcc/ gcc-alt- AtlasSite/gcc-links
 MANPATH = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases/gcc/6.2.0/x86_64-slc6/man:${MANPATH}
-AtlasArea = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10
+AtlasArea = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13
 CMTSTRUCTURINGSTYLE = <unset>
 CVSROOT = <unset>
 CMTEXTRATAGS = <unset>
-AtlasBuildStamp = 2017-11-14T2250
+AtlasBuildStamp = 2017-12-17T2251
 LCG_RELEASE_BASE = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases
 SVNGROUPS = svn+ssh://svn.cern.ch/reps/atlasgroups
 CMTHEADVERSION = <unset>
@@ -417,7 +417,7 @@ CMTSITE = <unset>
 LC_ALL = C
 CVSIGNORE = <unset>
 SVNROOT = svn+ssh://svn.cern.ch/reps/atlasoff
-AtlasVersion = 21.2.10
+AtlasVersion = 21.2.13
 CMTHOME = <unset>
 SVNPHYS = svn+ssh://svn.cern.ch/reps/atlasphys
 VERBOSE = 

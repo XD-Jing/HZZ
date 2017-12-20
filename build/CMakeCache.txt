@@ -42,10 +42,10 @@ ATLAS_PLATFORM:STRING=x86_64-slc6-gcc62-opt
 ATLAS_USE_GCC_CHECKERS:BOOL=ON
 
 //The directory containing a CMake configuration file for AnalysisBaseExternals.
-AnalysisBaseExternals_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake
+AnalysisBaseExternals_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake
 
 //The directory containing a CMake configuration file for AnalysisBase.
-AnalysisBase_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake
+AnalysisBase_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake
 
 //Path to a program.
 BASH_EXECUTABLE:FILEPATH=/bin/bash
@@ -406,7 +406,7 @@ HGCOMMAND:FILEPATH=/opt/rocks/bin/hg
 LCG_COMPVERS:STRING=49
 
 //The directory containing a CMake configuration file for LCG.
-LCG_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake
+LCG_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake
 
 //Directory holding LCG releases
 LCG_RELEASE_BASE:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases
@@ -445,13 +445,13 @@ Project_SOURCE_DIR:STATIC=/atlas/data19/liji/HZZ/source
 ROOTCORE:BOOL=TRUE
 
 //Path to a file.
-ROOT_BINARY_PATH:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/bin
+ROOT_BINARY_PATH:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/bin
 
 //Path to a file.
-ROOT_INCLUDE_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/include
+ROOT_INCLUDE_DIR:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/include
 
 //Path to a file.
-ROOT_PYTHON_PATH:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib
+ROOT_PYTHON_PATH:PATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib
 
 //Path to scp command, used by CTest for submitting results to
 // a Dart server
@@ -485,115 +485,124 @@ XAOD_ANALYSIS:BOOL=TRUE
 XAOD_STANDALONE:BOOL=TRUE
 
 //Path to a library.
-_ROOT_Cling_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so
+_ROOT_Cling_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so
 
 //Path to a library.
-_ROOT_Core_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so
+_ROOT_Core_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so
 
 //Path to a library.
-_ROOT_GenVector_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so
+_ROOT_GenVector_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so
 
 //Path to a library.
-_ROOT_Graf_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so
+_ROOT_Graf_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so
 
 //Path to a library.
-_ROOT_Gui_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so
+_ROOT_Gui_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so
 
 //Path to a library.
-_ROOT_Hist_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so
+_ROOT_Hist_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so
 
 //Path to a library.
-_ROOT_MathCore_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so
+_ROOT_MathCore_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so
 
 //Path to a library.
-_ROOT_MathMore_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so
+_ROOT_MathMore_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so
 
 //Path to a library.
-_ROOT_Matrix_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so
+_ROOT_Matrix_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so
 
 //Path to a library.
-_ROOT_Physics_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so
+_ROOT_Physics_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so
 
 //Path to a library.
-_ROOT_RIO_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so
+_ROOT_RIO_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so
 
 //Path to a library.
-_ROOT_Rint_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so
+_ROOT_Rint_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so
 
 //Path to a library.
-_ROOT_TreePlayer_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so
+_ROOT_TreePlayer_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so
 
 //Path to a library.
-_ROOT_Tree_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so
+_ROOT_Tree_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so
 
 //Path to a library.
-_ROOT_XMLIO_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so
+_ROOT_XMLIO_library:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so
 
 //Path to a program.
 _bash_executable:FILEPATH=/bin/bash
 
 //Path to a file.
-_buildRun:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/atlas_build_run.sh.in
+_buildRun:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/atlas_build_run.sh.in
 
 //Path to a file.
-_clientCMakeLists:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ClientCMakeLists.txt.in
+_clientCMakeLists:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ClientCMakeLists.txt.in
 
 //Path to a file.
-_cpackOptions:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/CPackOptions.cmake.in
+_cpackOptions:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/CPackOptions.cmake.in
 
 //Path to a file.
-_ctestCustom:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/CTestCustom.cmake.in
+_ctestCustom:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/CTestCustom.cmake.in
 
 //Path to a file.
-_expBuild:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ExperimentalBuild.cmake.in
+_dbgRpmConfig:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/CPackDbgRPMConfig.cmake.in
+
+//Path to a file.
+_dbgRpmInstall:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/cpack_dbg_install.sh.in
+
+//Path to a file.
+_expBuild:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ExperimentalBuild.cmake.in
 
 //Path to a library.
 _gccchecker:FILEPATH=_gccchecker-NOTFOUND
 
 //Path to a file.
-_installScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/cpack_install.cmake
+_installScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/cpack_install.cmake
 
 //Path to a file.
-_installShellScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/cpack_install.sh.in
+_installShellScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/cpack_install.sh.in
 
 //Path to a file.
-_license:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/LICENSE.txt
+_license:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/LICENSE.txt
 
 //Path to a program.
-_mergeClidsCmd:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/mergeClids.sh
+_mergeClidsCmd:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/mergeClids.sh
 
 //Path to a program.
-_mergeFilesCmd:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/mergeFiles.sh
+_mergeFilesCmd:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/mergeFiles.sh
 
 //Path to a file.
-_nightlyBuild:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/NightlyBuild.cmake.in
+_nightlyBuild:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/NightlyBuild.cmake.in
 
 //Path to a file.
-_nightlyNameScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/nightly_name.sh
+_nightlyNameScript:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/nightly_name.sh
 
 //Path to a file.
-_projConf:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ProjectConfig.cmake.in
+_projConf:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ProjectConfig.cmake.in
 
 //Path to a file.
-_projVers:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ProjectConfig-version.cmake.in
+_projVers:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ProjectConfig-version.cmake.in
 
 //Path to a file.
-_readme:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/README.txt.in
+_readme:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/README.txt.in
 
 //Path to a file.
-_releaseData:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ReleaseData.in
+_releaseData:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/ReleaseData.in
 
 //Path to a file.
-_sanitizer:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/atlas_export_sanitizer.cmake.in
+_sanitizer:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/skeletons/atlas_export_sanitizer.cmake.in
 
 //Path to a file.
-_setupSkeleton:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/setup.sh.in
+_setupSkeleton:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/scripts/setup.sh.in
 
 //Path to a file.
-_thisFile:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/AtlasFunctions.cmake
+_thisFile:FILEPATH=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/cmake/modules/AtlasFunctions.cmake
 
 //Dependencies for the target
 llvvLib_LIB_DEPENDS:STATIC=general;EventLoop;general;xAODEventInfo;general;xAODMuon;general;xAODJet;general;xAODCore;general;EventLoopAlgs;general;xAODTruth;general;dl;
+
+//The directory containing a CMake configuration file for xAOD.
+xAOD_DIR:PATH=xAOD_DIR-NOTFOUND
 
 
 ########################
@@ -754,7 +763,7 @@ CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Details about finding ROOT
-FIND_PACKAGE_MESSAGE_DETAILS_ROOT:INTERNAL=[/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/include][$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so>][/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/bin][/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt/lib][v6.08/06()]
+FIND_PACKAGE_MESSAGE_DETAILS_ROOT:INTERNAL=[/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/include][$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libCling.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRIO.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libHist.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTree.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libTreePlayer.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMatrix.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGenVector.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathCore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libMathMore.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libXMLIO.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGraf.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libGui.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libRint.so>;$<BUILD_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so>;$<INSTALL_INTERFACE:/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib/libPhysics.so>][/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/bin][/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt/lib][v6.08/06()]
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: HGCOMMAND
@@ -837,6 +846,10 @@ _clientCMakeLists-ADVANCED:INTERNAL=1
 _cpackOptions-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: _ctestCustom
 _ctestCustom-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _dbgRpmConfig
+_dbgRpmConfig-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _dbgRpmInstall
+_dbgRpmInstall-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: _expBuild
 _expBuild-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: _installScript

@@ -47,9 +47,7 @@
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/Package_llvv.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/install/local.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/llvvHeaderInstall.dir
-/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.grid.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir
-/atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.gridExeAttribSet.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/Package_llvv_tests.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/j.local.dir
 /atlas/data19/liji/HZZ/build/llvv/CMakeFiles/package.dir

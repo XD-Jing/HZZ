@@ -2,7 +2,7 @@
 if [ -z "${LCG_RELEASE_BASE}" ]; then
    export LCG_RELEASE_BASE=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases
 fi
-export ROOTSYS=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.10/InstallArea/x86_64-slc6-gcc62-opt
+export ROOTSYS=/cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.13/InstallArea/x86_64-slc6-gcc62-opt
 if [ -z "${PYTHONPATH}" ]; then
    export PYTHONPATH=${ROOTSYS}/lib:${ROOTSYS}/python
 else

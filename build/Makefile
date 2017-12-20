@@ -606,19 +606,6 @@ llvvHeaderInstall/fast:
 .PHONY : llvvHeaderInstall/fast
 
 #=============================================================================
-# Target rules for targets named j.grid
-
-# Build rule for target.
-j.grid: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 j.grid
-.PHONY : j.grid
-
-# fast build rule for target.
-j.grid/fast:
-	$(MAKE) -f llvv/CMakeFiles/j.grid.dir/build.make llvv/CMakeFiles/j.grid.dir/build
-.PHONY : j.grid/fast
-
-#=============================================================================
 # Target rules for targets named ATLAS_PACKAGES_TARGET
 
 # Build rule for target.
@@ -630,19 +617,6 @@ ATLAS_PACKAGES_TARGET: cmake_check_build_system
 ATLAS_PACKAGES_TARGET/fast:
 	$(MAKE) -f llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/build.make llvv/CMakeFiles/ATLAS_PACKAGES_TARGET.dir/build
 .PHONY : ATLAS_PACKAGES_TARGET/fast
-
-#=============================================================================
-# Target rules for targets named j.gridExeAttribSet
-
-# Build rule for target.
-j.gridExeAttribSet: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 j.gridExeAttribSet
-.PHONY : j.gridExeAttribSet
-
-# fast build rule for target.
-j.gridExeAttribSet/fast:
-	$(MAKE) -f llvv/CMakeFiles/j.gridExeAttribSet.dir/build.make llvv/CMakeFiles/j.gridExeAttribSet.dir/build
-.PHONY : j.gridExeAttribSet/fast
 
 #=============================================================================
 # Target rules for targets named Package_llvv_tests
@@ -743,9 +717,7 @@ help:
 	@echo "... ContinuousUpdate"
 	@echo "... Package_llvv"
 	@echo "... llvvHeaderInstall"
-	@echo "... j.grid"
 	@echo "... ATLAS_PACKAGES_TARGET"
-	@echo "... j.gridExeAttribSet"
 	@echo "... Package_llvv_tests"
 	@echo "... j.local"
 	@echo "... llvvLib"

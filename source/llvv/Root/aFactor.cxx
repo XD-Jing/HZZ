@@ -1,5 +1,6 @@
 #include <TLorentzVector.h>
 #include <TFile.h>
+#include <xAODRootAccess/TEvent.h>
 #include <AsgTools/MessageCheck.h>
 #include <xAODEventInfo/EventInfo.h>
 #include <xAODMuon/MuonContainer.h>
@@ -22,10 +23,14 @@
 #include <vector>
 using namespace std;
 
+int aFactor::count = 0;
+float aFactor::total_cutflow  = 0.0;
+float aFactor::passLep_cutflow = 0.0;
+float aFactor::passM2l_cutflow = 0.0;
+float aFactor::passJet_cutflow = 0.0;
+
 // this is needed to distribute the algorithm to the workers
 ClassImp(aFactor)
-
-
 
 aFactor :: aFactor ()
 {
@@ -66,6 +71,9 @@ EL::StatusCode aFactor :: histInitialize ()
 
     // get the output file, create a new TTree and connect it to that output
     // define what braches will go in that tree
+    //xAOD::TEvent *m_event = wk()->xaodEvent();
+    //std::cout << "events:"<<m_event->getEntries()<<std::endl;
+
     TFile *outputFile = wk()->getOutputFile (outputName);
     tree = new TTree ("tree", "tree");
     tree->SetDirectory (outputFile);
@@ -74,6 +82,7 @@ EL::StatusCode aFactor :: histInitialize ()
     tree->Branch ("passLep", &passLep);
     tree->Branch ("passM2l", &passM2l);
     tree->Branch ("passJet", &passJet);
+    tree->Branch ("weight", &weight);
     tree->Branch ("mZ1", &mZ1);
     tree->Branch ("mZ2", &mZ2);
     tree->Branch ("lepplus_pt", &lepplus_pt);
@@ -100,7 +109,6 @@ EL::StatusCode aFactor :: fileExecute ()
 }
 
 
-
 EL::StatusCode aFactor :: changeInput (bool /*firstFile*/)
 {
     // Here you do everything you need to do when we change input files,
@@ -122,12 +130,20 @@ EL::StatusCode aFactor :: initialize ()
     // you create here won't be available in the output if you have no
     // input events.
 
+    // cut flow counting
+
     ANA_MSG_INFO ("in initialize");
-    event_type = -1;
+    return EL::StatusCode::SUCCESS;
+}
+
+
+EL::StatusCode aFactor :: variableInit(){
     onshell = false;
     passLep = false;
     passM2l = false;
     passJet = false;
+    event_type = -1;
+    weight = 1.0;
     mZ1 = -1.;
     mZ2 = -1.;
     lepplus_pt = -999.;
@@ -143,9 +159,8 @@ EL::StatusCode aFactor :: initialize ()
     leading_eta_jet = -999.;
     subleading_eta_jet = -999.;
     return EL::StatusCode::SUCCESS;
+
 }
-
-
 
 EL::StatusCode aFactor :: execute ()
 {
@@ -157,12 +172,12 @@ EL::StatusCode aFactor :: execute ()
     // (add to top of each function once)
     ANA_CHECK_SET_TYPE (EL::StatusCode);
 
+    count ++;
+
+    if (count % 100 ==0) ANA_MSG_INFO ("Event: " << count );
+    ANA_CHECK ( variableInit());
     ANA_CHECK (exeEventInfo());
     ANA_CHECK (cutLepton());
-    //ANA_CHECK (exeMuon());
-    //ANA_CHECK (exeShallowCopy());
-
-    //ANA_MSG_INFO ("in execute");
 
     tree->Fill();
     return EL::StatusCode::SUCCESS;
@@ -178,9 +193,12 @@ EL::StatusCode aFactor :: exeEventInfo()
     ANA_CHECK (evtStore()->retrieve (eventInfo, "EventInfo"));
     EventNumber = eventInfo->eventNumber();
     isMC = eventInfo->eventType( xAOD::EventInfo::IS_SIMULATION );
+    vector<float> vw;
+    vw = eventInfo->mcEventWeights();
+    weight = vw.size()>0?vw[0]:1.0;
 
     // print out run and event number from retrieved object
-    ANA_MSG_INFO ("in execute, runNumber = " << eventInfo->runNumber() << ", eventNumber = " << eventInfo->eventNumber() << ", isMC = " << isMC);
+    //ANA_MSG_INFO ("in execute, runNumber = " << eventInfo->runNumber() << ", eventNumber = " << eventInfo->eventNumber() << ", isMC = " << isMC);
 
     return EL::StatusCode::SUCCESS;
 }
@@ -189,19 +207,11 @@ EL::StatusCode aFactor::cutLepton()
 {
     ANA_CHECK_SET_TYPE (EL::StatusCode);
 
-    vector<TLorentzVector> vp4e, vp4m, vp4n, vp4z, vp4n12, vp4n14, vp4t, vp4n16, vp4j;
-    vector<TLorentzVector> vp4l;
+    vector<TLorentzVector> vp4n, vp4l, vp4j;
     vector<float> vcharge;
     int n_e=0, n_m=0, n_ne=0, n_nm=0;
     vp4l.clear();
-    vp4e.clear();
-    vp4m.clear();
-    vp4t.clear();
-    //vp4n.clear();
-    vp4z.clear();
-    vp4n12.clear();
-    vp4n14.clear();
-    vp4n16.clear();
+    vp4n.clear();
     vcharge.clear();
     vp4j.clear();
 
@@ -210,29 +220,29 @@ EL::StatusCode aFactor::cutLepton()
 
     for ( auto trEvtItr: *TruthEvtContainer){
         int nTruPart = trEvtItr->nTruthParticles();
-        ANA_MSG_INFO("number of TruthParticles: " << nTruPart );
+        //ANA_MSG_INFO("number of TruthParticles: " << nTruPart );
         for (int j=0; j<nTruPart; j++){
             const xAOD::TruthParticle* trPart = trEvtItr->truthParticle(j);
             if (!trPart) continue;
-            int status = trPart->status();
+            //int status = trPart->status();
             int PDG = trPart->pdgId();
-            bool ProdVx = trPart->hasProdVtx();
-            bool DecayVx = trPart->hasDecayVtx();
-            int barcode = trPart->barcode();
+            //bool ProdVx = trPart->hasProdVtx();
+            //bool DecayVx = trPart->hasDecayVtx();
+            //int barcode = trPart->barcode();
             float charge = trPart->charge();
             TLorentzVector p4 = trPart->p4();
 
-            size_t nParents = trPart->nParents();
+            //size_t nParents = trPart->nParents();
             const xAOD::TruthParticle* parPart = trPart->parent();
-            int PDGpar = -1, statuspar = -1;
-            TLorentzVector p4par(0,0,0,0);
+            //int PDGpar = -1;
+            int statuspar = -1;
+            //TLorentzVector p4par(0,0,0,0);
             if (parPart){
-                PDGpar = parPart->pdgId();
+                //PDGpar = parPart->pdgId();
                 statuspar = parPart->status();
-                p4par = parPart->p4();
+                //p4par = parPart->p4();
             }
 
-            //if (status==62 && fabs(PDG)==23) vp4z.push_back(p4);
             if (statuspar==62 && fabs(PDG)==11) {
                 vp4l.push_back(p4);
                 n_e++;
@@ -243,7 +253,6 @@ EL::StatusCode aFactor::cutLepton()
                 n_m++;
                 vcharge.push_back(charge);
             }
-            //if (statuspar==62 && fabs(PDG)==15) vp4t.push_back(p4);
             if (statuspar==62 && fabs(PDG)==12){
                 vp4n.push_back(p4);
                 n_ne++;
@@ -252,16 +261,9 @@ EL::StatusCode aFactor::cutLepton()
                 vp4n.push_back(p4);
                 n_nm++;
             }
-            //if (statuspar==62 && fabs(PDG)==16) vp4n16.push_back(p4);
         }
     }
 
-    std::cout << vp4z.size() << vp4e.size()<<vp4m.size()<< vp4t.size()<<vp4n12.size()<<vp4n14.size()<< vp4n16.size()<<std::endl;
-
-    //if (vp4z.size()==2){
-    //    double mZ1 = vp4z[0].M();
-    //    double mZ2 = vp4z[1].M();
-    //}
     if (vp4l.size()==2){
         if (vcharge[0]>0 && vcharge[1]<0){
             lepplus_pt= vp4l[0].Pt();
@@ -290,21 +292,34 @@ EL::StatusCode aFactor::cutLepton()
 
     if (vp4n.size()==2) mZ2 = (vp4n[0]+vp4n[1]).M();
 
-    if (mZ1 > 66.e3 && mZ1 < 116.e3 && mZ2 > 66.e3 && mZ2 < 116.e3) onshell = true;
-    if (mZ1 > 76.e3 && mZ1 < 106.e3) passM2l = true;
+    if (mZ1 > 66.e3 && mZ1 < 116.e3 && mZ2 > 66.e3 && mZ2 < 116.e3) {
+        onshell = true;
+        total_cutflow += weight;
+    }
+    if (mZ1 > 76.e3 && mZ1 < 106.e3) {
+        passM2l = true;
+        if (onshell) {
+            passM2l_cutflow += weight;
+        }
+
+    }
 
     if (n_e==2 && n_ne==2) event_type = 0;
     else if(n_e==2 && n_nm==2) event_type = 1;
     else if (n_m==2 && n_ne==2) event_type = 2;
     else if (n_m==2 && n_nm==2) event_type = 3;
 
-    if (leading_pt_lep > 30.e3 && subleading_pt_lep > 20.e3) passLep = true;
+    if (leading_pt_lep > 30.e3 && subleading_pt_lep > 20.e3) {
+        passLep = true;
+        if (passM2l && onshell) {
+            passLep_cutflow += weight;
+        }
+    }
 
     const xAOD::JetContainer* TruthJets= nullptr;
     ANA_CHECK( evtStore()->retrieve( TruthJets, "AntiKt4TruthJets"));
 
     for ( auto trJet: *TruthJets){
-        //if (trJet->pt()>20.e3 && fabs(trJet->eta())<4.5) vp4j.push_back(trJet->p4());
         vp4j.push_back(trJet->p4());
     }
 
@@ -325,7 +340,13 @@ EL::StatusCode aFactor::cutLepton()
 
     int leading_index_jet = -1;
     int subleading_index_jet = -1;
+    leading_pt_jet = -999.;
+    subleading_pt_jet = -999.;
     float pt_tmp;
+    if (vp4j.size() <2) {
+        passJet = false;
+        return EL::StatusCode::SUCCESS;
+    }
     for (int i=0;i<(int)vp4j.size();i++){
         pt_tmp = vp4j[i].Pt();
         if (pt_tmp>leading_pt_jet && pt_tmp>subleading_pt_jet){
@@ -340,8 +361,14 @@ EL::StatusCode aFactor::cutLepton()
     leading_eta_jet = vp4j[leading_index_jet].Eta();
     subleading_eta_jet = vp4j[subleading_index_jet].Eta();
 
-    if (leading_pt_jet > 60.e3 && subleading_pt_jet > 40.e3) passJet = true;
+    if (leading_pt_jet > 60.e3 && subleading_pt_jet > 40.e3) {
+        passJet = true;
+        if (passM2l && passLep && onshell) {
+            passJet_cutflow += weight;
+        }
+    }
 
+    //std::cout << onshell<<passM2l<<passLep<<passJet<<std::endl;
     return EL::StatusCode::SUCCESS;
 }
 
@@ -365,6 +392,13 @@ EL::StatusCode aFactor :: finalize ()
     // submission node after all your histogram outputs have been
     // merged.  This is different from histFinalize() in that it only
     // gets called on worker nodes that processed input events.
+
+    std::cout << "total :" << total_cutflow<<std::endl;
+    std::cout << "M2l   :" << passM2l_cutflow<<std::endl;
+    std::cout << "Lep   :" << passLep_cutflow<<std::endl;
+    std::cout << "Jet   :" << passJet_cutflow<<std::endl;
+    std::cout << "A factor : "<< passJet_cutflow / total_cutflow<<std::endl;
+
     return EL::StatusCode::SUCCESS;
 }
 
